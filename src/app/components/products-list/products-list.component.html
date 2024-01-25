@@ -1,0 +1,13 @@
+<div class="flex flex-wrap -m-4">
+  <app-products-item *ngFor="let product of products" [product]="product"></app-products-item>
+</div>
+
+<div class="" *ngIf="!products">
+  <div class="flex flex-col text-center w-full mb-12">
+    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Error 404</h1>
+    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">No hemos encontrado lo que buscas</p>
+  </div>
+  <div class="p-2 w-full">
+    <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Regresar</button>
+  </div>
+</div>

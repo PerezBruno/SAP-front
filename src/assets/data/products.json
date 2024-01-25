@@ -1,0 +1,46 @@
+[
+  {
+    "_id": "658f8177d4497d1c31f1bfb3",
+    "title": "Producto para email",
+    "description": "testeando email",
+    "price": 11,
+    "thumbnail": ["no hay imagen"],
+    "code": "9876",
+    "stock": 11,
+    "status": true,
+    "category": "food"
+  },
+  {
+    "_id": "64fc69f8f6f0e70625fa6401",
+    "title": "Producto 654",
+    "description": "Este es el producto numero 10",
+    "price": 10,
+    "thumbnail": ["no hay imagen"],
+    "code": "654",
+    "stock": 9,
+    "status": true,
+    "category": "food"
+  },
+  {
+    "_id": "64fc6b0e604b8837ec4d06ef",
+    "title": "Producto 654",
+    "description": "Este es el producto numero 10",
+    "price": 10,
+    "thumbnail": ["no hay imagen"],
+    "code": "888",
+    "stock": 9,
+    "status": true,
+    "category": "food"
+  },
+  {
+    "_id": "658f8177d4497d1c31f1bfb3",
+    "title": "Producto para Angular",
+    "description": "testeando SAP",
+    "price": 11,
+    "thumbnail": ["no hay imagen"],
+    "code": "98f76",
+    "stock": 11,
+    "status": true,
+    "category": "food"
+  }
+]

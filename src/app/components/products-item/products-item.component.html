@@ -1,0 +1,12 @@
+<div class="lg:w-4/4 md:w-2/2 p-4 w-full">
+    <a class="block relative h-48 rounded overflow-hidden">
+      <img alt="ecommerce" class="object-cover object-center w-full h-full block" 
+      [src]="product? product.thumbnail[0] : ''" [alt]="product?.title"
+      [routerLink]="['', product?._id]">
+    </a>
+    <div class="mt-4">
+      <h2 class="text-gray-900 title-font text-lg font-medium">
+        {{ product?.title?.substring(0,20)}} {{ product && product.title[21] ? "..." : null}}</h2>
+      <p class="mt-1">${{ product?.price}}</p>
+    </div>
+  </div>
