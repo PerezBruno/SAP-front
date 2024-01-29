@@ -12,9 +12,6 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'cart', component: CartComponent},
   { path: ':id', component: ProductsDetailComponent},
-  
-
-
 ];
 
 @NgModule({

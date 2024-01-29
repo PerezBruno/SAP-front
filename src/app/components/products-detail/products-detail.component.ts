@@ -6,6 +6,7 @@ import { SessionService } from '../../services/session.service';
 import { jwtDecode } from 'jwt-decode';
 import { CartsService } from '../../services/carts.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 
@@ -86,17 +87,21 @@ export class ProductsDetailComponent implements OnInit, OnDestroy{
    async postAddToCart(){
     let prodId = this.product._id  // Me da el Id del producto
     let userDataToString = JSON.stringify(jwtDecode(this.sessionService.userToken))
-    console.log("🚀 ~ ProductsDetailComponent ~ postAddToCart ~ userDataToString:", userDataToString)
     let userJson = JSON.parse(userDataToString)
-    console.log("🚀 ~ ProductsDetailComponent ~ postAddToCart ~ userJson:", userJson)
     let cartId = userJson.user.cart   /// me da el id del carritpo
-    console.log("🚀 ~ ProductsDetailComponent ~ postAddToCart ~ cartId:", cartId)
     let cuantity = this.catchQuantity()  /// esta es el quntity => que viene de la funcion de arriba
-    console.log("🚀 ~ ProductsDetailComponent ~ postAddToCart ~ cuantity:", cuantity)
 
     const response = await this.cartsService.addProdTocart(cartId, prodId, cuantity)  /// envío los datos mediante un servicio al metodo addProdToCart()
-    console.log("🚀 ~ ProductsDetailComponent ~ postAddToCart ~ response:", response)
     this.router.navigate(['/cart'])
+  }
 
+  sendToLogin(){
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Aún no has iniciado sesión!",
+      showConfirmButton: false,
+      footer: '<a href="/login">Has <span class="text-xl">click aquí!</span> para iniciar sesión</a>'
+    });
   }
 }

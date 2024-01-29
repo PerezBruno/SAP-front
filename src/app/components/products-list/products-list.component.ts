@@ -14,7 +14,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   productSubs: Subscription | undefined
 
-  constructor (private productsService: ProductsService){}
+  constructor (
+    private productsService: ProductsService){}
 
   ngOnInit(): void {
       this.productSubs = this.productsService.getProducts()
@@ -33,5 +34,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
       this.productSubs?.unsubscribe()
+  }
+
+  updatePage(){
+    window.location.reload()
   }
 }

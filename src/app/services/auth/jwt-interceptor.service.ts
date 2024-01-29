@@ -11,38 +11,20 @@ export class JwtInterceptorService implements HttpInterceptor{
   constructor( private sessionService:SessionService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token:String = this.sessionService.userToken
-     console.log("🚀 ~ JwtInterceptorService ~ intercept ~ token:", token)
 
-    // if (token!=""){
-    //   req = req.clone({
-    //     setHeaders:{
-    //       "Content-Type": "application/json; charset=utf-8",
-    //       "Accept": "application/json",
-    //       "Authorization": `Bearer ${token}`,
-    //     },
-    //   })
-    // }
-    // return next.handle(req).pipe(
-    //   catchError((error)=>{
-    //     console.log(error, "error en interceptor")
-    //     return throwError(error)
-    //   })
-    // );
-
-
-
+      console.log("🚀 ~ JwtInterceptorService ~ intercept ~ this.sessionService:", this.sessionService.currentUserData.value)
       const reqClone = req.clone({
         setHeaders:{
           "Content-Type": "application/json; charset=utf-8",
           "Accept": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "Authorization": `${token}`,
         },
       })
 
     return next.handle(reqClone).pipe(
             catchError((error)=>{
         console.log(error, "error en interceptor JWT")
-        return throwError(error)
+        return throwError(() => error)
       })
     )
   }

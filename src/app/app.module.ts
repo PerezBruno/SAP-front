@@ -28,7 +28,7 @@ import { ErrorInterceptorService } from './services/auth/error-interceptor.servi
     ProductsListComponent,
     ProductsItemComponent,
     ProductsDetailComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
