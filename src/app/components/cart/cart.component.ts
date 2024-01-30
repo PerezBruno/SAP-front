@@ -31,7 +31,7 @@ export class CartComponent implements OnInit, OnDestroy{
   userDataToString = JSON.stringify(jwtDecode(this.sessionService.userToken))
   userJson = JSON.parse(this.userDataToString)
   cartId = this.userJson.user.cart
-  emailUser = this.userJson.user.email
+  emailUser: string = this.userJson.user.email
 
   ngOnInit(): void {
 
@@ -90,8 +90,9 @@ deleteProduct(productId:string){
   }
 
   ticket(){
+    console.log("ruta tocada")
     let cartId = this.cartId
-    let email = this.emailUser
+    let email  = {email: this.emailUser}
     const swalWithTailwindButtons = Swal.mixin({
       customClass: {
         confirmButton: "ml-4 bg-sky-900 hover:bg-sky-950 text-white hover:text-emerald-300 py-2 px-4 rounded",

@@ -12,12 +12,11 @@ export class JwtInterceptorService implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token:String = this.sessionService.userToken
 
-      console.log("🚀 ~ JwtInterceptorService ~ intercept ~ this.sessionService:", this.sessionService.currentUserData.value)
       const reqClone = req.clone({
         setHeaders:{
           "Content-Type": "application/json; charset=utf-8",
           "Accept": "application/json",
-          "Authorization": `${token}`,
+          "Authorization": `Bearer ${token}`,
         },
       })
 
