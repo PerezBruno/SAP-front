@@ -12,5 +12,19 @@ export class UsersService {
 
   constructor( private http: HttpClient ) { }
 
-  
+  getUsers(){
+    return this.http.get(`${this.ApiUrl}`)
+  }
+
+  deleteUserById(userId:string){
+    return this.http.delete(`${this.ApiUrl}/${userId}`)
+  }
+
+  deleteUsers(){
+    return this.http.delete(`${this.ApiUrl}/all`)
+  }
+
+  inactiveUsersDelete(){
+    return this.http.delete(`${this.ApiUrl}`)
+  }
 }

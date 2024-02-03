@@ -8,8 +8,6 @@ import { SessionService } from '../../services/session.service';
 })
 export class ProductsItemComponent implements OnInit {
 
-
-
   constructor(){
 
   }

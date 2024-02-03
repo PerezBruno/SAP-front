@@ -14,7 +14,8 @@
         <a class="mr-5 hover:text-gray-900">Second Link</a> -->
         <a class="mr-5 hover:text-gray-900" *ngIf="!userLoginOn" routerLink="/login" ng-reflect-router-link="login" href="/login">Iniciar Sesión</a>
         <a class="mr-5 hover:text-gray-900" *ngIf="!userLoginOn" routerLink="/register" ng-reflect-router-link="register" href="/register">Registrarse</a>
-        <a class="mr-5 hover:text-gray-900" *ngIf="userLoginOn" routerLink="/cart" ng-reflect-router-link="cart" href="/cart">Mi carrito</a>
+         <a class="mr-5 hover:text-gray-900" *ngIf="token?.user.role === 'Admin'" routerLink="/users" ng-reflect-router-link="users" href="/users">Administrar usuarios</a> 
+        <a class="mr-5 hover:text-gray-900" *ngIf="token?.user.role === 'User'" routerLink="/cart" ng-reflect-router-link="cart" href="/cart">Mi carrito</a>
         <a class="mr-5 hover:text-gray-900" *ngIf="userLoginOn" ng-reflect-router-link="/" (click)="logout()" href="/" >Cerrar sesión</a>
 
       </nav>

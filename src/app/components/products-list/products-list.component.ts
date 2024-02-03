@@ -27,7 +27,6 @@ export class ProductsListComponent implements OnInit, OnDestroy {
           console.log("🚀 ~ HomeComponent ~ this.productsService.getProducts ~ err:", err)
         },
         complete: ()=>{
-          console.log("************ COMPLETADO ***********")
         }
       })
   }

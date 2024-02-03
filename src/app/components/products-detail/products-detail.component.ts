@@ -37,6 +37,8 @@ export class ProductsDetailComponent implements OnInit, OnDestroy{
 
   userLoginOn:boolean = false
 
+
+
   constructor (
     private route: ActivatedRoute,
     private productService: ProductsService,
@@ -85,14 +87,28 @@ export class ProductsDetailComponent implements OnInit, OnDestroy{
     return {quantity: this.selectQuantity}
   }
    async postAddToCart(){
-    let prodId = this.product._id  // Me da el Id del producto
-    let userDataToString = JSON.stringify(jwtDecode(this.sessionService.userToken))
-    let userJson = JSON.parse(userDataToString)
-    let cartId = userJson.user.cart   /// me da el id del carritpo
-    let cuantity = this.catchQuantity()  /// esta es el quntity => que viene de la funcion de arriba
+      try {
+        let prodId = this.product._id  // Me da el Id del producto
+        let userDataToString = JSON.stringify(jwtDecode(this.sessionService.userToken))
+        let userJson = JSON.parse(userDataToString)
+        let cartId = userJson.user.cart   /// me da el id del carritpo
+        let cuantity = this.catchQuantity() /// esta es el quntity => que viene de la funcion de arriba
+        let userRole =  userJson.user.role// obtengo el rol del usuario
+        if(userRole !== "Admin"){
+          const response = await this.cartsService.addProdTocart(cartId, prodId, cuantity)  /// envío los datos mediante un servicio al metodo addProdToCart()
+          this.router.navigate(['/cart'])
+        }else{
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Los administradores no pueden acceder al carrito!",
+          });
+          this.router.navigate(['/'])
 
-    const response = await this.cartsService.addProdTocart(cartId, prodId, cuantity)  /// envío los datos mediante un servicio al metodo addProdToCart()
-    this.router.navigate(['/cart'])
+        }
+      } catch (error) {
+        console.log("🚀 ~ ProductsDetailComponent ~ postAddToCart ~ error:", error)
+      }
   }
 
   sendToLogin(){
@@ -105,3 +121,6 @@ export class ProductsDetailComponent implements OnInit, OnDestroy{
     });
   }
 }
+
+
+//<button *ngIf="usuario && usuario.rol === 'Admin'">Botón para Admin</button>

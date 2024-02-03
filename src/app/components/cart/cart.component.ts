@@ -48,6 +48,7 @@ export class CartComponent implements OnInit, OnDestroy{
       next:(products: any)=>{
         // this.products = products.products.docs
         this.products = products.products.products
+        console.log("🚀 ~ CartComponent ~ ngOnInit ~ this.products:", this.products)
       },
       error: (err:any) => {
         console.log("🚀 ~ HomeComponent ~ this.productsService.getProducts ~ err:", err)
@@ -90,7 +91,6 @@ deleteProduct(productId:string){
   }
 
   ticket(){
-    console.log("ruta tocada")
     let cartId = this.cartId
     let email  = {email: this.emailUser}
     const swalWithTailwindButtons = Swal.mixin({

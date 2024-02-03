@@ -10,18 +10,22 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class HeaderComponent {
 
-  userLoginOn:boolean = false
-  decodedToken:any
-  token: any 
+  userLoginOn:boolean = false 
+  decodedToken:any | undefined
+  token: any | undefined
 
-  constructor(private sessionService:SessionService, private router: Router){
+
+  constructor(
+    private sessionService:SessionService,
+    private router: Router){
+      
     this.sessionService.userLoginOn.subscribe({
       next:(userLoginOn) =>{
         this.userLoginOn = userLoginOn;
       }
     })
     this.sessionService.userData.subscribe({
-      next:(userData) =>{
+      next:(userData:any) =>{
         this.token = jwtDecode(userData)
       }
     })
