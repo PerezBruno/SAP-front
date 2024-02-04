@@ -48,13 +48,11 @@ export class CartComponent implements OnInit, OnDestroy{
       next:(products: any)=>{
         // this.products = products.products.docs
         this.products = products.products.products
-        console.log("🚀 ~ CartComponent ~ ngOnInit ~ this.products:", this.products)
       },
       error: (err:any) => {
         console.log("🚀 ~ HomeComponent ~ this.productsService.getProducts ~ err:", err)
       },
       complete: ()=>{
-        console.log("************ CART completado ***********")
       }
     })
 }
@@ -68,7 +66,7 @@ deleteProduct(productId:string){
   const response = this.cartsService.delProductsByIdInCartById(cartId, productId)
   .subscribe({
     next:((res=>{
-      console.log(res, "************************DELETE product")
+      window.location.reload()
     }))
   })
   error:()=>{
@@ -82,7 +80,6 @@ deleteProduct(productId:string){
     .subscribe({
       next:((res=>{
         window.location.reload()
-        console.log(res, "************************DELETE product")
       }))
     })
     error:()=>{

@@ -31,7 +31,7 @@
             <button class="flex ml-auto bg-sky-900 hover:bg-sky-950 text-white hover:text-red-300 border-0 py-2 px-6 focus:outline-none rounded" (click)="deleteProduct(product.product._id)">Quitar del carrito</button>
           </div>
         </div>
-        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" [src]="">
+        <img [alt]="product?.product?.title" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" [src]="">
       </div>
     </div>
   </section>
